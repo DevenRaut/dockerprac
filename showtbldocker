@@ -1,0 +1,39 @@
+step 1 :create python file
+# nano first.py
+                        first.py                                  
+#import module
+from tabulate import tabulate
+
+#assign data
+
+mydata = [
+        ["dev","google"],
+        ["atish","cdac"]
+]
+
+#create header
+
+head=["name","company"]
+
+#display table
+print (tabulate(mydata,headers=head,tablefmt="grid"))
+
+
+
+step2 : create Dockerfile
+
+# nano Dockerfile
+
+From python3
+RUN apt install pip -y
+RUN pip install tabulate
+RUN mkdir /deven/
+COPY first.py /deven/
+CMD ["python3","/deven/first.py"]
+
+step3:build image
+# docker bild -t first:1 .
+
+step4:run container
+# docker run -ti --rm first:1
+
