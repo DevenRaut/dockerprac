@@ -1,0 +1,24 @@
+step1: create a Dockerfile
+# nano Dockerfile
+
+
+FROM ubuntu/apache2
+WORKDIR /var/www/html
+RUN rm index.html
+RUN touch index.html
+RUN echo "hello..">index.html
+EXPOSE 80
+CMD ["apache2ctl","-D","FOREGROUND"]
+
+step2:build image
+# sudo docker build -t prac:1
+
+step3:check images
+# docker images
+
+step4:run a container
+# docker run --name web1 -d -p81:80 prac:1
+step5:check process
+# docker ps
+step6:curl 
+# curl localhost:81
